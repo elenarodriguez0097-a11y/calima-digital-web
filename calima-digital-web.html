@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calima Digital — Diseño Web en Canarias</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #0A0E27;
+            --accent: #6C5CE7;
+            --light: #F8F9FA;
+            --text: #2D3436;
+            --text-light: #636E72;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: #FFFFFF;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .logo {
+            font-family: 'Fraunces', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .contact-btn {
+            background: var(--primary);
+            color: white !important;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+        
+        .contact-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 4rem 3rem;
+            background: linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(108, 92, 231, 0.08) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            border-radius: 50%;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-tag {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            background: rgba(108, 92, 231, 0.1);
+            color: var(--accent);
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+        
+        .hero h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            letter-spacing: -0.03em;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 650px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
+        
+        .hero-cta {
+            display: inline-flex;
+            gap: 1.5rem;
+        }
+        
+        .btn-primary {
+            padding: 1.2rem 3rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(10, 14, 39, 0.15);
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(108, 92, 231, 0.3);
+        }
+        
+        .btn-secondary {
+            padding: 1.2rem 3rem;
+            background: transparent;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid var(--primary);
+            transition: all 0.3s;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 4rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 1.5rem 1rem;
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1) 0%, rgba(108, 92, 231, 0.05) 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 5rem 4rem;
+            background: var(--light);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: white;
+            color: var(--accent);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .section-header h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            transition: all 0.4s;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+        }
+        
+        .service-number {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent) 0%, #A29BFE 100%);
+            color: white;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        /* Portfolio Section */
+        .portfolio {
+            padding: 5rem 4rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .portfolio-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+        
+        .portfolio-image {
+            width: 100%;
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .portfolio-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.1) 100%);
+        }
+        
+        .portfolio-image.hotel {
+            background: linear-gradient(135deg, #03a9f4 0%, #0288d1 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        
+        .portfolio-image.cafe {
+            background: linear-gradient(135deg, #6d4c41 0%, #4e342e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        
+        .portfolio-image.gym {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        
+        .portfolio-info {
+            padding: 2rem;
+        }
+        
+        .portfolio-category {
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .portfolio-info h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            color: var(--primary);
+        }
+        
+        .portfolio-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1.2rem;
+        }
+        
+        .portfolio-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .portfolio-link:hover {
+            color: var(--accent);
+            gap: 0.8rem;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 5rem 4rem;
+            background: linear-gradient(180deg, var(--light) 0%, white 100%);
+        }
+        
+        .pricing-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .pricing-card {
+            background: white;
+            padding: 2.8rem 2.3rem;
+            border-radius: 20px;
+            border: 2px solid rgba(0, 0, 0, 0.06);
+            transition: all 0.4s;
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-card.featured {
+            background: var(--primary);
+            color: white;
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured h3,
+        .pricing-card.featured .price,
+        .pricing-card.featured p {
+            color: white;
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--accent) 0%, #A29BFE 100%);
+            color: white;
+            padding: 0.4rem 1.3rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .pricing-card .price {
+            font-family: 'Fraunces', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1.2rem 0;
+            line-height: 1;
+        }
+        
+        .pricing-card .price-desc {
+            color: var(--text-light);
+            margin-bottom: 1.8rem;
+            font-size: 0.9rem;
+        }
+        
+        .pricing-card.featured .price-desc {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-features li {
+            padding: 0.65rem 0;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+        }
+        
+        .pricing-card.featured .pricing-features li {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .pricing-features li:before {
+            content: "✓";
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .pricing-card.featured .pricing-features li:before {
+            color: #A29BFE;
+        }
+        
+        .pricing-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        .pricing-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .pricing-card.featured .pricing-btn {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .pricing-card.featured .pricing-btn:hover {
+            background: var(--accent);
+            color: white;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 5rem 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+        }
+        
+        .contact p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .contact-card {
+            background: var(--light);
+            padding: 2rem 1.5rem;
+            border-radius: 18px;
+            transition: all 0.3s;
+        }
+        
+        .contact-card:hover {
+            background: white;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            width: 55px;
+            height: 55px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.15) 0%, rgba(108, 92, 231, 0.05) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+        }
+        
+        .contact-card h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .contact-card a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        
+        .contact-card a:hover {
+            color: var(--primary);
+        }
+        
+        .contact-card span {
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3.5rem 4rem;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Fraunces', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        footer p {
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0.3rem 0;
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 6rem 2rem 4rem;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .features-grid,
+            .services-grid,
+            .portfolio-grid,
+            .pricing-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+            
+            .section-header h2,
+            .contact h2 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Calima Digital</div>
+        <ul class="nav-links">
+            <li><a href="#services">Servicios</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#pricing">Precios</a></li>
+            <li><a href="#contact" class="contact-btn">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">Diseño Web en Canarias</span>
+            <h1>Páginas web que impulsan tu negocio</h1>
+            <p>Diseño y desarrollo web profesional para pequeños negocios. Moderno, rápido y efectivo. Sin complicaciones, solo resultados.</p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn-primary">Empezar proyecto</a>
+                <a href="#portfolio" class="btn-secondary">Ver trabajos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Desarrollo Rápido</h3>
+                <p>Entrega en 3-10 días según el proyecto</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>100% Responsive</h3>
+                <p>Perfecta en móviles, tablets y ordenadores</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Diseño Moderno</h3>
+                <p>Estética actual y profesional</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>SEO Incluido</h3>
+                <p>Optimización para buscadores</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <span class="section-tag">Servicios</span>
+            <h2>¿Qué necesitas?</h2>
+            <p>Soluciones web completas adaptadas a tu negocio</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-number">01</div>
+                <h3>Webs Corporativas</h3>
+                <p>Presencia profesional online. Información completa de tu empresa, servicios y contacto. Genera confianza en tus clientes.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-number">02</div>
+                <h3>Restaurantes & Cafés</h3>
+                <p>Menú digital atractivo, sistema de reservas y galería de fotos. Aumenta tus reservas hasta un 40%.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-number">03</div>
+                <h3>Tiendas Online</h3>
+                <p>Vende 24/7 con tu propia tienda. Catálogo de productos, carrito y pagos seguros incluidos.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-number">04</div>
+                <h3>Portfolios</h3>
+                <p>Muestra tu trabajo de forma impactante. Perfecto para creativos, fotógrafos y artistas.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-number">05</div>
+                <h3>Landing Pages</h3>
+                <p>Páginas optimizadas para convertir. Ideales para campañas de marketing y lanzamientos.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-number">06</div>
+                <h3>Mantenimiento Web</h3>
+                <p>Tu web siempre actualizada y segura. Soporte técnico continuo y actualizaciones de contenido.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="section-header">
+            <span class="section-tag">Portfolio</span>
+            <h2>Proyectos Recientes</h2>
+            <p>Algunos ejemplos de webs creadas para negocios en Canarias</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item" onclick="window.open('ejemplo-spa-serenity.html', '_blank')">
+                <div class="portfolio-image" style="background: linear-gradient(135deg, #c2a58d 0%, #b39477 100%); display: flex; align-items: center; justify-content: center; font-size: 5rem;">🌺</div>
+                <div class="portfolio-info">
+                    <div class="portfolio-category">Bienestar</div>
+                    <h4>Serenity Spa</h4>
+                    <p>Web elegante para spa con reservas online. Diseño relajante que transmite paz y profesionalidad.</p>
+                    <a href="ejemplo-spa-serenity.html" target="_blank" class="portfolio-link" onclick="event.stopPropagation()">Ver proyecto →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" onclick="window.open('ejemplo-cafe-nube.html', '_blank')">
+                <div class="portfolio-image" style="background: linear-gradient(135deg, #8b6f47 0%, #6d5635 100%); display: flex; align-items: center; justify-content: center; font-size: 5rem;">☕</div>
+                <div class="portfolio-info">
+                    <div class="portfolio-category">Gastronomía</div>
+                    <h4>Café Nube</h4>
+                    <p>Web moderna para cafetería de especialidad con menú digital. Aumentó clientes un 40% en 3 meses.</p>
+                    <a href="ejemplo-cafe-nube.html" target="_blank" class="portfolio-link" onclick="event.stopPropagation()">Ver proyecto →</a>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" onclick="window.open('ejemplo-tienda-aura.html', '_blank')">
+                <div class="portfolio-image" style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); display: flex; align-items: center; justify-content: center; font-size: 5rem; color: white;">👗</div>
+                <div class="portfolio-info">
+                    <div class="portfolio-category">E-commerce</div>
+                    <h4>Tienda AURA</h4>
+                    <p>Tienda online minimalista y fashion. Diseño limpio que destaca los productos y facilita la compra.</p>
+                    <a href="ejemplo-tienda-aura.html" target="_blank" class="portfolio-link" onclick="event.stopPropagation()">Ver proyecto →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="section-header">
+            <span class="section-tag">Precios</span>
+            <h2>Inversión transparente</h2>
+            <p>Paquetes diseñados para cada tipo de negocio</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Básico</h3>
+                <div class="price">75€</div>
+                <p class="price-desc">Ideal para comenzar online</p>
+                <ul class="pricing-features">
+                    <li>Página de inicio</li>
+                    <li>Sección información</li>
+                    <li>Formulario contacto</li>
+                    <li>100% responsive</li>
+                    <li>SEO básico</li>
+                    <li>Google Maps</li>
+                    <li>Entrega 3-5 días</li>
+                </ul>
+                <a href="#contact" class="pricing-btn">Solicitar</a>
+            </div>
+            
+            <div class="pricing-card featured">
+                <div class="pricing-badge">Más popular</div>
+                <h3>Profesional</h3>
+                <div class="price">120€</div>
+                <p class="price-desc">Para negocios que quieren destacar</p>
+                <ul class="pricing-features">
+                    <li>Todo del plan Básico</li>
+                    <li>Hasta 5 páginas</li>
+                    <li>Galería de imágenes</li>
+                    <li>Blog / Noticias</li>
+                    <li>Redes sociales</li>
+                    <li>SEO avanzado</li>
+                    <li>2 meses soporte</li>
+                    <li>Entrega 5-7 días</li>
+                </ul>
+                <a href="#contact" class="pricing-btn">Solicitar</a>
+            </div>
+            
+            <div class="pricing-card">
+                <h3>E-commerce</h3>
+                <div class="price">150€</div>
+                <p class="price-desc">Comienza a vender online</p>
+                <ul class="pricing-features">
+                    <li>Todo del Profesional</li>
+                    <li>Tienda online</li>
+                    <li>Hasta 20 productos</li>
+                    <li>Carrito de compras</li>
+                    <li>Pasarela de pago</li>
+                    <li>Panel admin</li>
+                    <li>3 meses soporte</li>
+                    <li>Entrega 7-10 días</li>
+                </ul>
+                <a href="#contact" class="pricing-btn">Solicitar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Hablemos de tu proyecto</h2>
+        <p>Primera consulta gratuita y sin compromiso. Respuesta en menos de 24 horas.</p>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h4>Email</h4>
+                <a href="mailto:elenarodriguez0097@gmail.com">elenarodriguez0097@gmail.com</a>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">💬</div>
+                <h4>WhatsApp</h4>
+                <a href="https://wa.me/34676656754">+34 676 656 754</a>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h4>Ubicación</h4>
+                <span>Canarias, España</span>
+            </div>
+        </div>
+        <a href="mailto:elenarodriguez0097@gmail.com" class="btn-primary">Empezar ahora</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">Calima Digital</div>
+        <p>&copy; 2024 Calima Digital. Todos los derechos reservados.</p>
+        <p>Diseño web profesional en Canarias</p>
+    </footer>
+</body>
+</html>
