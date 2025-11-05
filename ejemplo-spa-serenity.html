@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serenity Spa — Bienestar y Belleza</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #4a4a4a;
+            background: #fdfbf7;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 4rem;
+            background: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(194, 165, 141, 0.2);
+        }
+        
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #c2a58d;
+            letter-spacing: 2px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #6b6b6b;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #c2a58d;
+        }
+        
+        /* Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(194, 165, 141, 0.15), rgba(194, 165, 141, 0.15)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23e8ddd0" width="1200" height="800"/><circle cx="600" cy="400" r="300" fill="%23c2a58d" opacity="0.1"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 400;
+            color: #4a4a4a;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: 3px;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: #6b6b6b;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: #c2a58d;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+        
+        .cta-btn:hover {
+            background: #b39477;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(194, 165, 141, 0.3);
+        }
+        
+        /* Services */
+        .services {
+            padding: 6rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            color: #4a4a4a;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #6b6b6b;
+            margin-bottom: 4rem;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+        
+        .service-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: white;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(194, 165, 141, 0.15);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #c2a58d 0%, #b39477 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .service-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #4a4a4a;
+            font-weight: 600;
+        }
+        
+        .service-card p {
+            color: #6b6b6b;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+        
+        .price {
+            margin-top: 1.5rem;
+            font-size: 1.5rem;
+            color: #c2a58d;
+            font-weight: 600;
+        }
+        
+        /* About */
+        .about {
+            padding: 6rem 4rem;
+            background: white;
+        }
+        
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        
+        .about-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #c2a58d 0%, #b39477 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+        }
+        
+        .about-text h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #4a4a4a;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+        
+        .about-text p {
+            color: #6b6b6b;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+        
+        /* Contact */
+        .contact {
+            padding: 6rem 4rem;
+            background: linear-gradient(135deg, #c2a58d 0%, #b39477 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .contact h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            text-align: center;
+        }
+        
+        .contact-item h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+        
+        .contact-item p {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            background: #4a4a4a;
+            color: white;
+        }
+        
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 968px) {
+            .services-grid,
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            nav {
+                padding: 1rem 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">SERENITY</div>
+        <ul class="nav-links">
+            <li><a href="#services">SERVICIOS</a></li>
+            <li><a href="#about">NOSOTROS</a></li>
+            <li><a href="#contact">CONTACTO</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bienestar para tu cuerpo y mente</h1>
+            <p>Descubre un oasis de tranquilidad en el corazón de Canarias. Tratamientos personalizados de belleza y bienestar.</p>
+            <a href="#contact" class="cta-btn">Reservar Cita</a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2 class="section-title">Nuestros Tratamientos</h2>
+        <p class="section-subtitle">Experiencias diseñadas para tu bienestar</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">💆</div>
+                <h3>Masajes Relajantes</h3>
+                <p>Libera tensiones con nuestros masajes terapéuticos. Técnicas tradicionales y modernas para tu bienestar.</p>
+                <div class="price">Desde 45€</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🌸</div>
+                <h3>Tratamientos Faciales</h3>
+                <p>Rejuvenece tu piel con productos naturales y técnicas avanzadas. Resultados visibles desde la primera sesión.</p>
+                <div class="price">Desde 60€</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <h3>Manicura & Pedicura</h3>
+                <p>Cuida tus manos y pies con nuestros tratamientos premium. Técnicas profesionales y productos de alta calidad.</p>
+                <div class="price">Desde 35€</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🧖</div>
+                <h3>Sauna & Hammam</h3>
+                <p>Desintoxica tu cuerpo y relaja tu mente. Instalaciones de lujo para tu máximo confort.</p>
+                <div class="price">Desde 25€</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💅</div>
+                <h3>Depilación Láser</h3>
+                <p>Tecnología de última generación para resultados duraderos. Tratamiento indoloro y efectivo.</p>
+                <div class="price">Desde 50€</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🌿</div>
+                <h3>Aromaterapia</h3>
+                <p>Equilibra tu energía con aceites esenciales naturales. Sesiones personalizadas según tus necesidades.</p>
+                <div class="price">Desde 40€</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-content">
+            <div class="about-image">🌺</div>
+            <div class="about-text">
+                <h2>Un espacio creado para ti</h2>
+                <p>En Serenity Spa creemos que el bienestar es un viaje, no un destino. Nuestro equipo de profesionales altamente cualificados está dedicado a proporcionarte una experiencia única y transformadora.</p>
+                <p>Utilizamos únicamente productos naturales y orgánicos, combinando técnicas ancestrales con la tecnología más avanzada para garantizar los mejores resultados.</p>
+                <p>Cada tratamiento es personalizado según tus necesidades, porque entendemos que cada persona es única y especial.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Reserva tu momento de paz</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 2rem;">Estamos aquí para cuidarte</p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <h4>Teléfono</h4>
+                <p>+34 922 123 456</p>
+            </div>
+            <div class="contact-item">
+                <h4>Email</h4>
+                <p>info@serenityspa.com</p>
+            </div>
+            <div class="contact-item">
+                <h4>Ubicación</h4>
+                <p>Calle La Paz 15, Tenerife</p>
+            </div>
+        </div>
+        <a href="#" class="cta-btn" style="margin-top: 3rem;">Reservar Ahora</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Serenity Spa. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
